@@ -7,6 +7,9 @@
  LC_CTYPE = 'pt_BR.UTF-8'
  ALLOW_CONNECTIONS = true;
 
+CREATE SCHEMA elmasri;
+ALTER USER gabriel
+SET SEARCH_PATH TO elmasri, "$user", public;
 
 	CREATE TABLE funcionario
 ( 
