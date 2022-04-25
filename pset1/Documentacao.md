@@ -9,6 +9,16 @@ Os scripts com os inserts estão separados com o nome 'Script Insert' *[banco de
 
 A mesma lógica se aplica aos scripts que contém a criação do Banco de Dados juntamente a criação das tabelas: 'Script' *[banco de dados utilizado]*.
 
+### Ordem ideal para visualização:
+
+* Documentacao.md
+* Subdiretórios.md
+* ScriptUser.txt
+* ScriptPostgreSQL.txt
+* ScriptInsertsPostgreSQL.txt
+* ScriptMariaDB.txt
+* ScriptInsertsMariaDB.txt
+
 ### Para mais especificidade:
 
 ScriptPostgreSQL.txt = Arquivo com os comandos SQL para criação de todas as tabelas do Banco de Dados 'uvv'
