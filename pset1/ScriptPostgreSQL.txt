@@ -1,0 +1,115 @@
+	CREATE DATABASE uvv
+ WITH 
+ OWNER = gabriel 
+ TEMPLATE = template0 
+ ENCODING = UTF8 
+ LC_COLLATE = 'pt_BR.UTF-8'
+ LC_CTYPE = 'pt_BR.UTF-8'
+ ALLOW_CONNECTIONS = true;
+
+
+	CREATE TABLE funcionario
+( 
+ cpf CHAR(11) NOT NULL PRIMARY KEY,
+ primeiro_nome VARCHAR(15) NOT NULL,
+ nome_meio CHAR(1),
+ ultimo_nome VARCHAR(15) NOT NULL,
+ data_nascimento DATE,
+ endereco VARCHAR(70),
+ sexo CHAR(1),
+ salario DECIMAL(10,2),
+ cpf_supervisor CHAR(11),
+ numero_departamento INT NOT NULL,
+ FOREIGN KEY (cpf_supervisor) REFERENCES funcionario (cpf)
+);
+
+COMMENT ON TABLE funcionario IS 'Tabela com os dados dos funcionário';
+COMMENT ON COLUMN funcionario.cpf IS 'CPF dos funcionários';
+COMMENT ON COLUMN funcionario.primeiro_nome IS 'Primeiro nome do funcionário';
+COMMENT ON COLUMN funcionario.nome_meio IS 'Nome do meio do funcionário';
+COMMENT ON COLUMN funcionario.ultimo_nome IS 'Ultimo nome do funcionário';
+COMMENT ON COLUMN funcionario.data_nascimento IS 'Data de nascimento do funcionário';
+COMMENT ON COLUMN funcionario.endereco IS 'Endereço do funcionário';
+COMMENT ON COLUMN funcionario.sexo IS 'Sexo do funcionário';
+COMMENT ON COLUMN funcionario.salario IS 'Salário do funcionário';
+COMMENT ON COLUMN funcionario.cpf_supervisor IS 'CPF do supervisor do funcionário';
+COMMENT ON COLUMN funcionario.numero_departamento IS 'N° do departamento que o funcionário trabalha';
+
+
+	CREATE TABLE dependente
+(
+ cpf_funcionario CHAR(11) NOT NULL,
+ nome_dependente VARCHAR(15) NOT NULL,
+ sexo CHAR(1),
+ data_nascimento DATE,
+ parentesco VARCHAR(15),
+ PRIMARY KEY (cpf_funcionario, nome_dependente),
+ FOREIGN KEY (cpf_funcionario) REFERENCES funcionario (cpf)
+);
+
+COMMENT ON TABLE dependente IS 'Tabela com dados dos dependentes';
+COMMENT ON COLUMN dependente.nome_dependente IS 'Nome do dependente';
+COMMENT ON COLUMN dependente.sexo IS 'Sexo do dependente';
+COMMENT ON COLUMN dependente.data_nascimento IS 'Data de nascimento do dependente';
+COMMENT ON COLUMN dependente.parentesco IS 'Parentesco entre funcionário e dependente';
+
+
+	CREATE TABLE departamento
+(
+ numero_departamento INTEGER NOT NULL PRIMARY KEY,
+ nome_departamento VARCHAR(15) NOT NULL UNIQUE,
+ cpf_gerente VARCHAR(11) NOT NULL,
+ data_inicio_gerente DATE,
+ FOREIGN KEY (cpf_gerente) REFERENCES funcionario (cpf)
+);
+
+COMMENT ON TABLE departamento IS 'Departamento que o funcionário trabalha';
+COMMENT ON COLUMN departamento.numero_departamento IS 'N° do departamento do funcionário';
+COMMENT ON COLUMN departamento.nome_departamento IS 'Nome do departamento do funcionário';
+COMMENT ON COLUMN departamento.cpf_gerente IS 'CPF do gerente do departamento';
+COMMENT ON COLUMN departamento.data_inicio_gerente IS 'Data em que o gerente começou no departamento';
+
+
+	CREATE TABLE localizacoes_departamento
+(
+ numero_departamento INTEGER NOT NULL,
+ local VARCHAR(15) NOT NULL, 
+ PRIMARY KEY (numero_departamento, local),
+ FOREIGN KEY (numero_departamento) REFERENCES departamento (numero_departamento)
+);
+
+COMMENT ON TABLE localizacoes_departamento IS 'Localização dos departamentos';
+COMMENT ON COLUMN localizacoes_departamento.numero_departamento IS 'N° do departamento';
+COMMENT ON COLUMN localizacoes_departamento.local IS 'Local do departamento';
+
+
+	CREATE TABLE projeto
+(
+ numero_projeto INTEGER NOT NULL,
+ nome_projeto VARCHAR(15) NOT NULL UNIQUE,
+ local_projeto VARCHAR(15),
+ numero_departamento INTEGER NOT NULL, 
+ PRIMARY KEY (numero_projeto),
+ FOREIGN KEY (numero_departamento) REFERENCES departamento (numero_departamento)
+);
+
+COMMENT ON TABLE projeto IS 'Dados dos projetos';
+COMMENT ON COLUMN projeto.numero_projeto IS 'N° do projeto';
+COMMENT ON COLUMN projeto.local_projeto IS 'Local do projeto';
+COMMENT ON COLUMN projeto.numero_departamento IS 'N° do departamento em que o projeto está sendo realizado';
+
+
+	CREATE TABLE trabalha_em
+(
+ cpf_funcionario VARCHAR(11) NOT NULL,
+ numero_projeto INTEGER NOT NULL,
+ horas DECIMAL(3, 1) NOT NULL,
+ PRIMARY KEY(cpf_funcionario, numero_projeto),
+ FOREIGN KEY(cpf_funcionario) REFERENCES funcionario(cpf),
+ FOREIGN KEY(numero_projeto) REFERENCES projeto(numero_projeto)
+);
+
+COMMENT ON TABLE trabalha_em IS 'No que o funcionário trabalha';
+COMMENT ON COLUMN trabalha_em.cpf_funcionario IS 'Cpf do funcionário';
+COMMENT ON COLUMN trabalha_em.numero_projeto IS 'N° do projeto que o funcionário está trabalhando';
+COMMENT ON COLUMN trabalha_em.horas IS 'Horas trabalhadas';
