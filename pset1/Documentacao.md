@@ -13,11 +13,11 @@ A mesma lógica se aplica aos scripts que contém a criação do Banco de Dados 
 
 * Documentacao.md
 * Subdiretórios.md
-* ScriptUser.txt
-* ScriptPostgreSQL.txt
-* ScriptInsertsPostgreSQL.txt
-* ScriptMariaDB.txt
-* ScriptInsertsMariaDB.txt
+* ScriptUser.sql
+* ScriptPostgre.sql
+* ScriptInsertsPostgre.sql
+* ScriptMariaDB.sql
+* ScriptInsertsMariaDB.sql
 
 ### Para mais especificidade:
 
