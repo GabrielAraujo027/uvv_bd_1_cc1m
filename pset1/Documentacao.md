@@ -21,12 +21,12 @@ A mesma lógica se aplica aos scripts que contém a criação do Banco de Dados 
 
 ### Para mais especificidade:
 
-ScriptPostgreSQL.txt = Arquivo com os comandos SQL para criação de todas as tabelas do Banco de Dados 'uvv'
+ScriptPostgre.sql = Arquivo com os comandos SQL para criação de todas as tabelas do Banco de Dados 'uvv'
 
-ScriptInsertsPostgreSQL.txt = Arquivo com os comandos SQL de inserção de dados no Banco de Dados
+ScriptInsertsPostgre.sql = Arquivo com os comandos SQL de inserção de dados no Banco de Dados
 
-ScriptMariaDB.txt = Arquivo com os comandos SQL para criação de todas tabelas no BD MARIADB.
+ScriptMariaDB.sql = Arquivo com os comandos SQL para criação de todas tabelas no BD MARIADB.
 
-ScriptInsertsMariaDB.txt = Arquivo com os comandos SQL de inserção de dados no MARIADB.
+ScriptInsertsMariaDB.sql = Arquivo com os comandos SQL de inserção de dados no MARIADB.
 
-ScriptUser.txt = Arquivo com os comandos SQL para criar banco de dados/schema no postgres.
+ScriptUser.sql = Arquivo com os comandos SQL para criar banco de dados/schema no postgres.
