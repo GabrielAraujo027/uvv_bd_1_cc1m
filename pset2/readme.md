@@ -1,2 +1,2 @@
 # Pset2
-Aqui está armazenado todo o conteúdo referente ao Pset2.
+Aqui estão todas as repostas referentes ao **Pset2.**
