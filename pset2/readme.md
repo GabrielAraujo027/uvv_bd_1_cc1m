@@ -1,2 +1,2 @@
 # Pset2
-Aqui estará armazenado todo o conteúdo referente ao Pset2.
+Aqui está armazenado todo o conteúdo referente ao Pset2.
